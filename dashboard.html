@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Company - Dashboard</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        @font-face {
+            font-family: Roboto;
+            src: url('fonts/Roboto/Roboto-Regular.ttf');
+        }
+
+        body {
+            background: #FAFAFA 0% 0% no-repeat padding-box;
+            opacity: 1;
+            margin: 0;
+            font-family: Roboto;
+        }
+
+        #sidebar-div {
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+
+            width: 242px;
+
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            opacity: 1;
+
+        }
+
+        #navbar-div {
+            position: sticky;
+            right: 0;
+            top: 0;
+            display: flex;
+
+            height: 80px;
+            margin-left: 242px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            opacity: 1;
+        }
+
+        #logo-img {
+            height: 40;
+            width: 142px;
+        }
+
+        #search-icon {
+            margin-left: 100px;
+        }
+
+        #notification-icon {
+            margin-left: 600px;
+            margin-right: 50px;
+        }
+
+        .navbar-icons {
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+
+        .sidebar-icons {
+            height: 30px;
+            width: 30px;
+            padding-right: 11px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        a {
+            text-align: left;
+            font: normal normal normal 16px/21px Roboto;
+            letter-spacing: 0px;
+            color: #3E3E3E;
+            opacity: 1;
+            text-decoration: none;
+
+        }
+
+        .sidebar-row {
+            height: 43px;
+            padding-top: 30px;
+            padding-left: 30px;
+            width: 183px;
+            border-radius: 5px;
+            opacity: 1;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        #page-heading {
+            text-align: left;
+            font: normal normal medium 30px/39px Roboto;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+        }
+
+        #main-content {
+            position: absolute;
+            right: 0;
+            width: 1200px;
+            margin-left: 242px;
+            padding: 50px;
+            padding-right: 51px;
+        }
+
+        .stats-block {
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border-radius: 5px;
+            opacity: 1;
+            height: 116px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+        .row {
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+        .sales-block {
+            height: 400px;
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border-radius: 5px;
+            opacity: 1;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 20px;
+        }
+
+        #table-div {
+            background: #FFFFFF 0% 0% no-repeat padding-box;
+            border-radius: 5px;
+            opacity: 1;
+            padding: 20px;
+        }
+
+        #div-heading {
+            text-align: left;
+            font: normal normal medium 22px/29px Roboto;
+            letter-spacing: 0px;
+            color: #3E3E3E;
+            opacity: 1;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .tbl-head-row {
+            text-align: left;
+            font: normal normal normal 15px/20px Roboto;
+            letter-spacing: 1.5px;
+            color: #ADADAD;
+            opacity: 1;
+        }
+
+        .tbl-row {
+            text-align: left;
+            font: normal normal normal 15px/20px Roboto;
+            letter-spacing: 0px;
+            color: #3E3E3E;
+            opacity: 1;
+        }
+
+        .table td.status .paid {
+            background: #EBFFEF 0% 0% no-repeat padding-box;
+            color: #3CDD5F;
+            opacity: 1;
+        }
+
+        .table td.status .failed {
+            background: #FFF5F5 0% 0% no-repeat padding-box;
+            color: #FF4545;
+            opacity: 1;
+        }
+
+        .table td.status .pending {
+            background: #F8F8F8 0% 0% no-repeat padding-box;
+            color: #BABABA;
+            opacity: 1;
+        }
+
+        .table td.status span {
+            text-align: left;
+            font: normal normal normal 15px/20px Roboto;
+            letter-spacing: 0px;
+
+            border-radius: 5px;
+            padding: 5px;
+
+        }
+
+        .block-content {
+            padding: 15px;
+        }
+
+        .block-text {
+            text-align: left;
+            font: normal normal medium 25px/33px Roboto;
+            letter-spacing: 0px;
+            color: #3E3E3E;
+            opacity: 1;
+        }
+
+        .block-subtext {
+            text-align: left;
+            font: normal normal normal 15px/20px Roboto;
+            letter-spacing: 0px;
+            color: #3E3E3E;
+            opacity: 1;
+        }
+
+        .block-imgs{
+            height: 26px;
+            width: 26px;
+        }
+
+        .legend-div-icons{
+            height: 20px;
+            width: 20px;
+        }
+
+        a .active{
+            padding: 5px;
+            background: #FFF3F4;
+            color: #C8242F;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="sidebar-div">
+        <img src="images/menu-bar.svg" alt="Menu Bar" style="padding: 25px;">
+        <img id="logo-img" class="navbar-icons" src="images/logo.svg" alt="Logo">
+        <ul>
+            <li class="sidebar-row">
+                <a href="#" class="active">
+                    <img src="images/dashboard-default.svg" alt="" class="sidebar-icons">
+                    <span class="sidebar-labels">Dashboard</span>
+                </a>
+            </li>
+            <li class="sidebar-row">
+                <a href="innerpage.html">
+                    <img src="images/graph-default.svg" alt="" class="sidebar-icons">
+                    <span>Analysis</span>
+                </a>
+            </li>
+            <li class="sidebar-row">
+                <a href="#">
+                    <img src="images/inbox-default.svg" alt="" class="sidebar-icons">
+                    <span>Inbox</span>
+                </a>
+            </li>
+            <li class="sidebar-row">
+                <a href="#">
+                    <img src="images/clock-default.svg" alt="" class="sidebar-icons">
+                    <span>History</span>
+                </a>
+            </li>
+            <li class="sidebar-row">
+                <a href="#">
+                    <img src="images/user-default.svg" alt="" class="sidebar-icons">
+                    <span>Users</span>
+                </a>
+            </li>
+            <li class="sidebar-row">
+                <a href="#">
+                    <img src="images/maintenance-default.svg" alt="" class="sidebar-icons">
+                    <span>Maintenance</span>
+                </a>
+            </li>
+            <li class="sidebar-row">
+                <a href="#">
+                    <img src="images/setting-default.svg" alt="" class="sidebar-icons">
+                    <span>Setting</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="navbar-div">
+        <img id="search-icon" class="navbar-icons" src="images/search-icon.svg" alt="Search Icon">
+        <input type="search" placeholder="Search" style="border: none;">
+        <img id="notification-icon" class="navbar-icons" src="images/notification-icon.svg" alt="Notification Icon">
+        <img id="user-avatar" style="padding: 18px;" src="images/profile.png" alt="User Avatar">
+        <label class="navbar-icons" style="padding-top: 30px;">John Doe</label>
+        <img class="navbar-icons" src="images/select-downward.svg" alt="Dropdown Menu" style="margin-left:20px;">
+    </div>
+
+    <div id="main-content">
+        <span id="page-heading">Dashboard</span>
+        <div class="container">
+            <div class="row" id="stats-div">
+                <div class="col stats-block" style="margin-left: 0;">
+                    <div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
+                        <div class="d-none d-sm-block">
+                            <img src="images/star.svg" alt="star" class="block-imgs">
+                        </div>
+                        <div>
+                            <div class="fw-semibold block-text">23,456</div>
+                            <div class="fs-sm fw-semibold block-subtext">New Products</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col stats-block">
+                    <div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
+                        <div class="d-none d-sm-block">
+                            <img src="images/new-product.svg" alt="" class="block-imgs">
+                        </div>
+                        <div>
+                            <div class="fw-semibold block-text">2345</div>
+                            <div class="fs-sm fw-semibold block-subtext">Added Products</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col stats-block">
+                    <div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
+                        <div class="d-none d-sm-block">
+                            <img src="images/total-product.svg" alt="" class="block-imgs">
+                        </div>
+                        <div>
+                            <div class="fw-semibold block-text">32,456</div>
+                            <div class="fs-sm fw-semibold block-subtext">Total Products</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col stats-block">
+                    <div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
+                        <div class="d-none d-sm-block">
+                            <img src="images/dollar-filled.svg" alt="" class="block-imgs">
+                        </div>
+                        <div>
+                            <div class="fw-semibold block-text">5678</div>
+                            <div class="fs-sm fw-semibold block-subtext">Today's Sale</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col stats-block" style="margin-right: 0;">
+                    <div class="block-content block-content-full d-sm-flex justify-content-between align-items-center">
+                        <div class="d-none d-sm-block">
+                            <img src="images/money-bag.svg" alt="" class="block-imgs">
+                        </div>
+                        <div>
+                            <div class="fw-semibold block-text">33,5342</div>
+                            <div class="fs-sm fw-semibold block-subtext">Total Sale</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row" id="sales-div">
+                <div class="col-lg-8 sales-block" style="margin-left: 0;">
+                    <div id="div-heading">Sale</div>
+                    <img src="images/data-graph.png" alt="data graph" style="width: 700px;">
+                </div>
+                <div class="col sales-block" style="margin-right: 0;">
+                    <div id="div-heading">Sale by Country</div>
+                    <img src="images/pie-chart.svg" alt="pie-chart">
+                    <div id="legend-div">
+                        <img src="images/radio-checked-icon.svg" class="legend-div-icons"><span>United States of America</span>
+                        <img src="images/radio-checked-icon.svg" style="fill:#3CDD5F" class="legend-div-icons"><span>Canada</span><br>
+                        <img src="images/radio-checked-icon.svg" style="fill: #F16C20" class="legend-div-icons"><span>Russia</span>
+                        <img src="images/radio-checked-icon.svg" style="fill: #EBC844" class="legend-div-icons"><span>India</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" id="table-div">
+            <div id="div-heading">Invoices</div>
+            <table class="table">
+                <tr class="tbl-head-row">
+                    <td>INVOICE</td>
+                    <td>COMPANY NAME</td>
+                    <td>EMAIL</td>
+                    <td>DUE DATE</td>
+                    <td>STATUS</td>
+                    <td>AMOUNT</td>
+                </tr>
+                <tr class="tbl-row">
+                    <td>651535</td>
+                    <td>Public Adjusting Firm</td>
+                    <td>georgia.young@example.com</td>
+                    <td>24 May, 2020</td>
+                    <td class="status">
+                        <span class="paid">Paid</span>
+                    </td>
+                    <td>$47,800</td>
+                </tr>
+                <tr class="tbl-row">
+                    <td>551862</td>
+                    <td>Other</td>
+                    <td>jessica.hanson@example.com</td>
+                    <td>24 May, 2020</td>
+                    <td class="status">
+                        <span class="paid">Paid</span>
+                    </td>
+                    <td>$98,000</td>
+                </tr>
+                <tr class="tbl-row">
+                    <td>551862</td>
+                    <td>Vendor</td>
+                    <td>alma.lawson@example.com</td>
+                    <td>8 Sept, 2020</td>
+                    <td class="status">
+                        <span class="paid">Paid</span>
+                    </td>
+                    <td>$20,900</td>
+                </tr>
+                <tr class="tbl-row">
+                    <td>551862</td>
+                    <td>Property Management Company</td>
+                    <td>kenzi.lawson@example.com</td>
+                    <td>22 Oct, 2020</td>
+                    <td class="status">
+                        <span class="paid">Paid</span>
+                    </td>
+                    <td>$10,570</td>
+                </tr>
+                <tr class="tbl-row">
+                    <td>651535</td>
+                    <td>Subcontractor Company</td>
+                    <td>jackson.graham@example.com</td>
+                    <td>1 Feb, 2020</td>
+                    <td class="status">
+                        <span class="failed">Failed</span>
+                    </td>
+                    <td>$10,200</td>
+                </tr>
+                <tr class="tbl-row">
+                    <td>653518</td>
+                    <td>Mortgage Company</td>
+                    <td>felicia.reid@example.com</td>
+                    <td>22 Oct, 2020</td>
+                    <td class="status">
+                        <span class="pending">Pending</span>
+                    </td>
+                    <td>$12,600</td>
+                </tr>
+                <tr class="tbl-row">
+                    <td>487441</td>
+                    <td>TPA</td>
+                    <td>dolores.chambers@example.com</td>
+                    <td>21 Sep, 2020</td>
+                    <td class="status">
+                        <span class="paid">Paid</span>
+                    </td>
+                    <td>$11,170</td>
+                </tr>
+                <tr class="tbl-row">
+                    <td>267400</td>
+                    <td>Fire Department</td>
+                    <td>nevaeh.simmons@example.com</td>
+                    <td>17 Oct, 2020</td>
+                    <td class="status">
+                        <span class="failed">Failed</span>
+                    </td>
+                    <td>$28,000</td>
+                </tr>
+                <tr class="tbl-row">
+                    <td>449003</td>
+                    <td>Insurance Carrier</td>
+                    <td>curtis.weaver@example.com</td>
+                    <td>21 Sep, 2020</td>
+                    <td class="status">
+                        <span class="paid">Paid</span>
+                    </td>
+                    <td>$10,000</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
