@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html>
 
 <head>
-    <title>Company - Dashboard</title>
+    <title>Company - Analysis</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="js/bootstrap.bundle.min.js">
@@ -12,11 +11,182 @@
             src: url('fonts/Roboto/Roboto-Regular.ttf');
         }
 
-        body {
-            background: #FAFAFA 0% 0% no-repeat padding-box;
+        .navbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 80px;
+            /* background-color: red; */
+            background: #FFFFFF 0% 0% no-repeat padding-box;
             opacity: 1;
+            padding: 0% 2% 0% 2%;
+        }
+
+        .nav-head {
+            width: max-content;
+        }
+
+        .nav-head-content {
+            padding-right: 15px;
+        }
+
+        #menu-btn {
+            display: none;
+        }
+
+        .nav-content {
+            width: 80%;
+            font: normal normal normal 16px/21px Roboto;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+        }
+
+        .nav-content-left {
+            width: 30%;
+            float: left;
+            padding: 2% 0 2% 0;
+        }
+
+        .nav-content-right {
+            width: 30%;
+            float: right;
+            text-align: right;
+            padding: 1% 0 1% 0;
+        }
+
+        .nav-content input {
+            border: none;
+            background: none;
+        }
+
+        .nav-content-icons {
+            height: 20px;
+            margin: 0 10px 0 10px;
+        }
+
+        #user-avatar {
+            height: 44px;
+            width: 44px;
+            margin: 0 2% 0 2%;
+        }
+
+        .nav-head button {
+            border: none;
+            background: none;
+            padding: 0;
             margin: 0;
-            font-family: Roboto;
+        }
+
+        .sidebar {
+            width: 0px;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            bottom: 0;
+            background-color: white;
+        }
+
+        .main-content {
+            background-color: #FAFAFA;
+            height: 100vh;
+            padding: 3%;
+            margin-top: 80px;
+        }
+
+        .sidebar-list {
+            margin: 10% 5% 0 5%;
+            padding: 0;
+        }
+
+        .sidebar-row {
+            padding: 5%;
+        }
+
+        .sidebar-row:hover,
+        .sidebar-row.active {
+            background: #FFF3F4 0% 0% no-repeat padding-box;
+            border-radius: 5px;
+            opacity: 1;
+
+        }
+
+        .sidebar-row:hover span,
+        .sidebar-row.active span {
+            font: normal normal normal 16px/21px Roboto;
+            letter-spacing: 0px;
+            color: #C8242F;
+        }
+
+        .page-heading {
+            width: 100%;
+            font: bold 30px Roboto;
+            letter-spacing: 0px;
+            color: #000000;
+            opacity: 1;
+        }
+
+
+
+        /* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media only screen and (min-width: 1200px) {
+            #menu-btn {
+                display: inline;
+            }
+
+            .sidebar {
+                width: 300px;
+            }
+
+            .main-content {
+                margin-left: 300px;
+            }
+
+
+        }
+
+        /* Large devices (laptops/desktops, 992px and up) */
+        @media only screen and (min-width: 992px) and (max-width: 1199px) {
+            #menu-btn {
+                display: inline;
+            }
+
+            .sidebar {
+                width: 242px;
+            }
+
+            .main-content {
+                margin-left: 242px;
+            }
+
+        }
+
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (min-width: 768px) and (max-width: 991px) {
+            .sidebar-list {
+                display: none;
+            }
+
+
+        }
+
+        /* Small devices (portrait tablets and large phones, 600px and up) */
+        @media only screen and (min-width: 600px) and (max-width: 765px) {
+            .sidebar-list {
+                display: none;
+            }
+        }
+
+        @media only screen and (max-width: 600px) {
+            .sidebar-list {
+                display: none;
+            }
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
         }
 
         #analysis-div {
@@ -247,287 +417,286 @@
             margin-top: 0px;
         }
     </style>
-    <script>
-        // let tabHeader = document.getElementsByClassName("tab-header")[0];
-        // let tabIndicator = document.getElementsByClassName("tab-indicator")[0];
-        // let tabBody = document.getElementsByClassName("tab-body")[0];
 
-        // let tabsPane = tabHeader.getElementsByTagName("div");
 
-        // for(let i=0 ; i<tabsPane.length ; i++){
-        //     tabsPane[i].addEventListener("onclick",function(){
-        //         tabHeader.getElementsByClassName("active")[0].classList.remove("active");
-        //         tabsPane[i].classList.add("active");
-        //         tabBody.getElementsByClassName("active")[0].classList.remove("active");
-        //         tabBody.getElementsByTagName("div")[i].classList.add("active");
-
-        //         tabIndicator.style.left = `calc(calc(100% / 4) * ${i})`;
-
-        //     });
-        // }
-    </script>
 </head>
 
 <body>
-    <div id="sidebar-div">
-        <img src="images/menu-bar.svg" alt="Menu Bar" style="padding: 25px;">
-        <img id="logo-img" class="navbar-icons" src="images/logo.svg" alt="Logo">
-        <ul>
-            <li class="sidebar-row">
-                <a href="dashboard.html" class="active">
+    <div class="navbar">
+        <div class="nav-head">
+            <button type="button" id="menu-btn" onclick="toggleMenu()">
+                <img src="images/menu-bar.svg" alt="Menu Bar" class="nav-head-content" id="menu-btn">
+            </button>
+            <img id="logo-img" src="images/logo.svg" alt="Logo" class="nav-head-content">
+        </div>
+        <div class="nav-content">
+            <div class="nav-content-left">
+                <img src="images/search-icon.svg" alt="Search Icon" class="nav-content-icons">
+                <input type="search" value="Search">
+            </div>
+            <div class="nav-content-right">
+                <img src="images/notification-icon.svg" alt="Notification Icon" class="nav-content-icons">
+                <img id="user-avatar" src="images/profile.png" alt="User Avatar" class="nav-content-icons">
+                <label>John Doe</label>
+                <img src="images/select-downward.svg" alt="Dropdown Menu" class="nav-content-icons">
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <ul class="sidebar-list">
+            <a href="dashboard.html">
+                <li class="sidebar-row">
                     <img src="images/dashboard-default.svg" alt="" class="sidebar-icons">
-                    <span class="sidebar-labels">Dashboard</span>
-                </a>
-            </li>
-            <li class="sidebar-row">
-                <a href="innerpage.html">
-                    <img src="images/graph-default.svg" alt="" class="sidebar-icons">
+                    <span>Dashboard</span>
+                </li>
+            </a>
+            <a href="innerpage2.html">
+                <li class="sidebar-row active">
+                    <img src="images/graph-active.svg" alt="" class="sidebar-icons">
                     <span>Analysis</span>
-                </a>
-            </li>
-            <li class="sidebar-row">
-                <a href="#">
+                </li>
+            </a>
+            <a href="#">
+                <li class="sidebar-row">
                     <img src="images/inbox-default.svg" alt="" class="sidebar-icons">
                     <span>Inbox</span>
-                </a>
-            </li>
-            <li class="sidebar-row">
-                <a href="#">
+                </li>
+            </a>
+            <a href="#">
+                <li class="sidebar-row">
                     <img src="images/clock-default.svg" alt="" class="sidebar-icons">
                     <span>History</span>
-                </a>
-            </li>
-            <li class="sidebar-row">
-                <a href="#">
+                </li>
+            </a>
+            <a href="#">
+                <li class="sidebar-row">
                     <img src="images/user-default.svg" alt="" class="sidebar-icons">
                     <span>Users</span>
-                </a>
-            </li>
-            <li class="sidebar-row">
-                <a href="#">
+                </li>
+            </a>
+            <a href="#">
+                <li class="sidebar-row">
                     <img src="images/maintenance-default.svg" alt="" class="sidebar-icons">
                     <span>Maintenance</span>
-                </a>
-            </li>
-            <li class="sidebar-row">
-                <a href="#">
+                </li>
+            </a>
+            <a href="#">
+                <li class="sidebar-row">
                     <img src="images/setting-default.svg" alt="" class="sidebar-icons">
                     <span>Setting</span>
-                </a>
-            </li>
+                </li>
+            </a>
         </ul>
     </div>
-    <div id="navbar-div">
-        <img id="search-icon" class="navbar-icons" src="images/search-icon.svg" alt="Search Icon">
-        <input type="search" placeholder="Search" style="border: none;">
-        <img id="notification-icon" class="navbar-icons" src="images/notification-icon.svg" alt="Notification Icon">
-        <img id="user-avatar" style="padding: 18px;" src="images/profile.png" alt="User Avatar">
-        <label class="navbar-icons" style="padding-top: 30px;">John Doe</label>
-        <img class="navbar-icons" src="images/select-downward.svg" alt="Dropdown Menu" style="margin-left:20px;">
-    </div>
-
-    <div id="main-content">
-        <span id="page-heading">Analysis</span>
-
-        <div class="container" id="analysis-div">
-            <div id="one-col">
-                <div class="row">
-                    <div class="col">
-                        <div class="heading-text" style="margin: 0;">
-                            One Column
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <input type="text" placeholder="Name" class="col-content">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <select class="col-content">
-                            <option>Dropdown</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <textarea placeholder="Multiple line" class="col-content" rows="5"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div id="two-col">
-                <div class="row">
-                    <div class="col">
-                        <div class="heading-text">
-                            Two Column
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="text" placeholder="Name" class="col-content">
-                    </div>
-                    <div class="col-md-6">
-                        <input type="text" placeholder="Username" class="col-content">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <input type="text" placeholder="Password" class="col-content">
-                    </div>
-                    <div class="col-md-6">
-                        <select class="col-content">
-                            <option>Dropdown</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div id="three-col">
-                <div class="row">
-                    <div class="col">
-                        <div class="heading-text">
-                            Three Column
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <input type="text" placeholder="Focus" class="col-content three-col">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="password" placeholder="Password" class="col-content">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" value="johndoe" disabled class="col-content">
-                    </div>
-                </div>
-            </div>
-            <div id="four-col">
-                <div class="row">
-                    <div class="col">
-                        <div class="heading-text">
-                            Four Column
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <input type="text" placeholder="Designation" class="col-content">
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" placeholder="Name" class="col-content">
-                    </div>
-                    <div class="col-md-3">
-                        <input type="text" placeholder="Username" class="col-content">
-                    </div>
-                    <div class="col-md-3">
-                        <select class="col-content">
-                            <option>Select</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div id="four-col">
-                <div class="row">
-                    <div class="col">
-                        <div class="heading-text">
-                            Other Design Elements
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="sub-heading-text">File Upload</div>
-                    <div>
-                        <button id="upload-btn">
-                            <img src="images/cloud-upload-icon.svg" alt="Upload" style="padding-right: 10px;">Upload
-                        </button>
-                        <span id="item-count">No item Selected</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="sub-heading-text">Radio Button</div>
-                    <div>
-                        <input type="radio" id="radio-btn" name="options" value="opt-1">
-                        <label class="lbl-text">Option 1</label>
-                        <input type="radio" id="radio-btn" name="options" value="opt-2">
-                        <label class="lbl-text">Option 2</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="sub-heading-text">Checkbox</div>
-                    <div>
-                        <input type="checkbox" id="radio-btn" name="options" value="opt-1" checked disabled>
-                        <label class="lbl-text">Option 1</label>
-                        <input type="checkbox" id="radio-btn" name="options" value="opt-2">
-                        <label class="lbl-text">Option 2</label>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="sub-heading-text">Snackbar</div>
+    <div class="main-content">
+        <div class="container">
+            <div class="page-heading">Analysis</div>
+            <div class="container" id="analysis-div">
+                <div id="one-col">
                     <div class="row">
-                        <div class="col snackbar" style="margin-right: 20px;" id="error-snack">
-                            <img src="images/error-icon.svg" alt="error">
-                            <span>This is an error Message</span>
-                        </div>
-                        <div class="col snackbar" id="info-snack">
-                            <img src="images/info-icon.svg" alt="error">
-                            <span>This is an information message</span>
+                        <div class="col">
+                            <div class="heading-text" style="margin: 0;">
+                                One Column
+                            </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col snackbar" style="margin-right: 20px;" id="warning-snack">
-                            <img src="images/warning-icon.svg" alt="error">
-                            <span>This is a warning message!</span>
+                        <div class="col">
+                            <input type="text" placeholder="Name" class="col-content">
                         </div>
-                        <div class="col snackbar" id="success-snack">
-                            <img src="images/success-icon.svg" alt="error">
-                            <span>This is a Success message!</span>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <select class="col-content">
+                                <option>Dropdown</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <textarea placeholder="Multiple line" class="col-content" rows="5"></textarea>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="sub-heading-text">Call in action</div>
-                    <div class="action-btn-div">
-                        <button id="primary-btn" class="action-btn">Primary</button>
-                        <button id="secondary-btn" class="action-btn">Secondary</button>
+                <div id="two-col">
+                    <div class="row">
+                        <div class="col">
+                            <div class="heading-text">
+                                Two Column
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" placeholder="Name" class="col-content">
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" placeholder="Username" class="col-content">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" placeholder="Password" class="col-content">
+                        </div>
+                        <div class="col-md-6">
+                            <select class="col-content">
+                                <option>Dropdown</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="sub-heading-text">Tabs</div>
-                    <div class="tabs">
-                        <div class="tab-header">
-                            <div class="active">Tab 1</div>
-                            <div>Tab 2</div>
-                            <div>Tab 3</div>
-                        </div>
-                        <div class="tab-indicator">
-                            <hr>
-                        </div>
-                        <div class="tab-body">
-                            <div class="active">
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing</p>
+                <div id="three-col">
+                    <div class="row">
+                        <div class="col">
+                            <div class="heading-text">
+                                Three Column
                             </div>
-                            <div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <input type="text" placeholder="Focus" class="col-content three-col">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="password" placeholder="Password" class="col-content">
+                        </div>
+                        <div class="col-md-4">
+                            <input type="text" value="johndoe" disabled class="col-content">
+                        </div>
+                    </div>
+                </div>
+                <div id="four-col">
+                    <div class="row">
+                        <div class="col">
+                            <div class="heading-text">
+                                Four Column
                             </div>
-                            <div>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                    unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                    It has survived not only five centuries, but also the leap into electronic
-                                    typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                    the release of Letraset sheets containing</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" placeholder="Designation" class="col-content">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" placeholder="Name" class="col-content">
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" placeholder="Username" class="col-content">
+                        </div>
+                        <div class="col-md-3">
+                            <select class="col-content">
+                                <option>Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="four-col">
+                    <div class="row">
+                        <div class="col">
+                            <div class="heading-text">
+                                Other Design Elements
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="sub-heading-text">File Upload</div>
+                        <div>
+                            <button id="upload-btn">
+                                <img src="images/cloud-upload-icon.svg" alt="Upload" style="padding-right: 10px;">Upload
+                            </button>
+                            <span id="item-count">No item Selected</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="sub-heading-text">Radio Button</div>
+                        <div>
+                            <input type="radio" id="radio-btn" name="options" value="opt-1">
+                            <label class="lbl-text">Option 1</label>
+                            <input type="radio" id="radio-btn" name="options" value="opt-2">
+                            <label class="lbl-text">Option 2</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="sub-heading-text">Checkbox</div>
+                        <div>
+                            <input type="checkbox" id="radio-btn" name="options" value="opt-1" checked disabled>
+                            <label class="lbl-text">Option 1</label>
+                            <input type="checkbox" id="radio-btn" name="options" value="opt-2">
+                            <label class="lbl-text">Option 2</label>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="sub-heading-text">Snackbar</div>
+                        <div class="row">
+                            <div class="col snackbar" style="margin-right: 20px;" id="error-snack">
+                                <img src="images/error-icon.svg" alt="error">
+                                <span>This is an error Message</span>
+                            </div>
+                            <div class="col snackbar" id="info-snack">
+                                <img src="images/info-icon.svg" alt="error">
+                                <span>This is an information message</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col snackbar" style="margin-right: 20px;" id="warning-snack">
+                                <img src="images/warning-icon.svg" alt="error">
+                                <span>This is a warning message!</span>
+                            </div>
+                            <div class="col snackbar" id="success-snack">
+                                <img src="images/success-icon.svg" alt="error">
+                                <span>This is a Success message!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="sub-heading-text">Call in action</div>
+                        <div class="action-btn-div">
+                            <button id="primary-btn" class="action-btn">Primary</button>
+                            <button id="secondary-btn" class="action-btn">Secondary</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="sub-heading-text">Tabs</div>
+                        <div class="tabs">
+                            <div class="tab-header">
+                                <div class="active">Tab 1</div>
+                                <div>Tab 2</div>
+                                <div>Tab 3</div>
+                            </div>
+                            <div class="tab-indicator">
+                                <hr>
+                            </div>
+                            <div class="tab-body">
+                                <div class="active">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type and scrambled it to make a type specimen
+                                        book.
+                                        It has survived not only five centuries, but also the leap into electronic
+                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                                        with
+                                        the release of Letraset sheets containing</p>
+                                </div>
+                                <div>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type and scrambled it to make a type specimen
+                                        book.
+                                        It has survived not only five centuries, but also the leap into electronic
+                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                                        with
+                                        the release of Letraset sheets containing</p>
+                                </div>
+                                <div>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
+                                        unknown printer took a galley of type and scrambled it to make a type specimen
+                                        book.
+                                        It has survived not only five centuries, but also the leap into electronic
+                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                                        with
+                                        the release of Letraset sheets containing</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -536,5 +705,3 @@
         </div>
     </div>
 </body>
-
-</html>
