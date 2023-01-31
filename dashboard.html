@@ -303,13 +303,32 @@
             padding: 2%;
         }
 
-        .div-head {
+        .graph-head {
             display: flex;
             width: 100%;
+            height: 50px;
+
             margin-bottom: 5%;
         }
 
-        .div-heading {
+
+
+        .tabs-graph .tab-header{
+            display: flex;
+        }
+
+        .tabs-graph .tab-header>div{
+            width: 75px;
+            color: #ADADAD;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .tabs-graph .tab-header>div.active {
+            color: #C8242F;
+        }
+
+        .graph-heading {
             font: normal normal medium 22px/29px Roboto;
             letter-spacing: 0px;
             color: #3E3E3E;
@@ -320,33 +339,6 @@
         #data-graph {
             width: 100%;
             height: 70%;
-        }
-
-        .tabs {
-            font: normal normal normal 10px Roboto;
-            letter-spacing: 0px;
-            color: #ADADAD;
-            opacity: 1;
-            height: 50px;
-            background: none;
-            width: fit-content;
-        }
-
-        .tabs .tab-header {
-            display: flex;
-        }
-
-        .tabs .tab-header>div {
-            width: 75px;
-            color: #ADADAD;
-            font-weight: 600;
-            cursor: pointer;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .tabs .tab-header>div.active {
-            color: #C8242F;
         }
 
         .chart-col-content {
@@ -479,7 +471,7 @@
                     <span>Dashboard</span>
                 </li>
             </a>
-            <a href="innerpage2.html">
+            <a href="innerpage.html">
                 <li class="sidebar-row">
                     <img src="images/graph-default.svg" alt="" class="sidebar-icons">
                     <span>Analysis</span>
@@ -579,9 +571,9 @@
             </div>
             <div class="row graph-row">
                 <div class="col-md-8 graph-col">
-                    <div class="div-head">
-                        <div id="div-heading">Sale</div>
-                        <div class="tabs">
+                    <div class="graph-head">
+                        <div id="graph-heading">Sale</div>
+                        <div class="tabs-graph">
                             <div class="tab-header">
                                 <div>Weekly</div>
                                 <div>Monthly</div>
@@ -595,7 +587,7 @@
                     <img src="images/data-graph.png" alt="data graph" id="data-graph">
                 </div>
                 <div class="col chart-col">
-                    <div id="div-heading">Sales by Country</div>
+                    <div id="graph-heading">Sales by Country</div>
                     <div class="chart-col-content">
                         <img src="images/pie-chart.svg" alt="pie-chart" id="pie-chart">
                         <div id="legend-div">

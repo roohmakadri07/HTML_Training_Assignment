@@ -63,9 +63,13 @@ a {
 
 }
 
-
-li {
-    /* display: inline-block; */
+.sidebar-row {
+    height: 43px;
+    padding-top: 30px;
+    padding-left: 30px;
+    width: 183px;
+    border-radius: 5px;
+    opacity: 1;
 }
 
 #page-heading {
