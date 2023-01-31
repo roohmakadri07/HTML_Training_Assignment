@@ -2,7 +2,6 @@
 
 <head>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="js/bootstrap.bundle.min.js">
     <style>
         @font-face {
@@ -10,50 +9,84 @@
             src: url('fonts/Roboto/Roboto-Regular.ttf');
         }
 
-        html,
-        body {
-
-            margin: 0;
-            height: 100%;
+        .index-body {
+            margin: 10% 0% 10% 0%;
         }
 
-        body {
-            background: #FAFAFA 0% 0% no-repeat padding-box;
-            opacity: 1;
+        @media only screen and (max-width: 600px) {
+            .index-wrapper {
+                display: block;
+            }
+
+            .index-left,
+            .index-right {
+                text-align: center;
+            }
         }
 
-        #main-div {
-            margin-top: 5%;
-            margin-left: 5%;
+        /* Small devices (portrait tablets and large phones, 600px and up) */
+        @media only screen and (min-width: 600px) {
+            .index-wrapper {
+                display: block;
+            }
+
+            .index-left,
+            .index-right {
+                text-align: center;
+            }
         }
 
+        /* Medium devices (landscape tablets, 768px and up) */
+        @media only screen and (min-width: 768px) {
+            .index-wrapper {
+                display: block;
+            }
+
+            .index-left,
+            .index-right {
+                text-align: center;
+            }
+        }
+
+        /* Large devices (laptops/desktops, 992px and up) */
+        @media only screen and (min-width: 992px) {
+            .index-wrapper {
+                display: flex;
+            }
+
+            .index-right {
+                text-align: center;
+            }
+
+            .index-left {
+                text-align: center;
+            }
+        }
+
+        /* Extra large devices (large laptops and desktops, 1200px and up) */
+        @media only screen and (min-width: 1200px) {
+            .index-wrapper {
+                display: flex;
+            }
+
+            .index-right {
+                text-align: left;
+            }
+
+            .index-left {
+                text-align: center;
+            }
+
+        }
 
         #banner-img {
             border-radius: 50%;
             border: 20px solid #FFFFFF;
-            overflow: auto;
-            height: fit-content;
-            width: fit-content;
-        }
-
-        #content-div {
-            display: inline;
-
-            position: absolute;
-            left: 60%;
-            top: 0;
-            bottom: 0;
-
-            letter-spacing: 0px;
             opacity: 1;
         }
 
         #logo-div {
-            height: 58px;
-            width: 272px;
-            display: flex;
-            font-size: 40px;
-            margin: 5% 0 5% 0;
+            margin-top: 5%;
         }
 
         #tagline-div {
@@ -90,8 +123,6 @@
 
         #form-div {
             display: block;
-
-            text-align: left;
             font: normal normal normal 15px/20px Roboto;
             letter-spacing: 0px;
             color: #ADADAD;
@@ -110,32 +141,34 @@
 </head>
 
 <body>
-    <div class="row" id="main-div">
-        <div class="col">
-            <img id="banner-img" src="images/hero-image.png" alt="Banner Image">
-        </div>
-        <div class="col">
-            <div id="logo-div">
-                <img src="images/logo.svg" alt="Logo">
+    <div class="index-body">
+        <div class="index-wrapper row">
+            <div class="index-left col">
+                <img id="banner-img" src="images/hero-image.png" alt="Banner Image">
             </div>
-            <div id="tagline-div">
-                <p>We are <span style="font:normal normal 900 40px/53px Roboto; color: #C8242F;">experts</span> in
-                    business,<br>marketing, growth & sales.</p>
-            </div>
-            <div>
-                <p style="font: normal normal normal 25px/33px Roboto; color: #3E3E3E;">Login into your account</p>
-            </div>
-            <div id="form-div">
-                <form>
-                    <input type="text" id="username" placeholder="Username"><br>
-                    <input type="password" id="password" placeholder="Password"><br>
-                    <div>
-                        <input type="submit" id="login-btn" value="Login" formaction="dashboard.html">
-                        <a href="#" style="margin-left:160px;">Forgot Password?</a>
-                    </div>
+            <div class="index-right col">
+                <div id="logo-div">
+                    <img src="images/logo.svg" alt="Logo">
+                </div>
+                <div id="tagline-div">
+                    <p>We are <span style="font:normal normal 900 40px/53px Roboto; color: #C8242F;">experts</span> in
+                        business,<br>marketing, growth & sales.</p>
+                </div>
+                <div>
+                    <p style="font: normal normal normal 25px/33px Roboto; color: #3E3E3E;">Login into your account</p>
+                </div>
+                <div id="form-div">
+                    <form>
+                        <input type="text" id="username" placeholder="Username"><br>
+                        <input type="password" id="password" placeholder="Password"><br>
+                        <div>
+                            <input type="submit" id="login-btn" value="Login" formaction="dashboard.html">
+                            <a href="#" style="margin-left:160px;">Forgot Password?</a>
+                        </div>
 
-                </form>
-                <p>Are you a new Member? <a href="#" style="color: #C8242F;">Register here</a></p>
+                    </form>
+                    <p>Are you a new Member? <a href="#" style="color: #C8242F;">Register here</a></p>
+                </div>
             </div>
         </div>
     </div>
