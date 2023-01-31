@@ -45,12 +45,12 @@
 .sidebar-icons {
     height: 30px;
     width: 30px;
-    padding-right: 11px;
+    margin-right: 10%;
 }
 
 ul {
     list-style: none;
-    padding: 0;
+    text-align: left;
 }
 
 a {
@@ -63,17 +63,9 @@ a {
 
 }
 
-.sidebar-row {
-    height: 43px;
-    padding-top: 30px;
-    padding-left: 30px;
-    width: 183px;
-    border-radius: 5px;
-    opacity: 1;
-}
 
 li {
-    display: inline-block;
+    /* display: inline-block; */
 }
 
 #page-heading {
