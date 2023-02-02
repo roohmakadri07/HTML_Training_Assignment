@@ -41,7 +41,7 @@ ul {
 }
 
 .navbar {
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
@@ -106,7 +106,7 @@ ul {
 
 .sidebar {
     width: 0px;
-    position: fixed;
+    position: absolute;
     top: 80px;
     left: 0;
     bottom: 0;
